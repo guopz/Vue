@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vur-router</title>
+	<style type="text/css">
+		 .router-link-active{color:red;}
+	</style>
+</head>
+<body>
+	<!-- 设置根节点 -->
+	<div id="app">
+		<h1>Hell App!</h1>
+		<p>
+	    	<router-link to="/user/foo">/user/foo</router-link>
+	    	<router-link to="/user/foo/profile">/user/foo/profile</router-link>
+	    	<router-link to="/user/foo/posts">/user/foo/posts</router-link>
+	    	<router-link to="/user/aa">/user</router-link>
+	  	</p>
+	  	<router-view></router-view>
+	</div>
+
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="vue-router.js"></script>
+	<script type="text/javascript">
+		// 定义两个 组件
+		const User = {
+		  template: `
+		    <div class="user">
+		      <h2>User {{ $route.params.id }}</h2>
+		      <router-view></router-view>
+		    </div>
+		  `
+		}
+
+		const UserHome = { template: '<div>Home</div>' }
+		const UserProfile = { template: '<div>Profile</div>' }
+		const UserPosts = { template: '<div>Posts</div>' }
+
+		const router = new VueRouter({
+		  routes: [
+		    { path: '/user/:id', component: User,
+		      children: [
+		        // UserHome will be rendered inside User's <router-view>
+		        // when /user/:id is matched
+		        { path: '', component: UserHome },
+						
+		        // UserProfile will be rendered inside User's <router-view>
+		        // when /user/:id/profile is matched
+		        { path: 'profile', component: UserProfile },
+
+		        // UserPosts will be rendered inside User's <router-view>
+		        // when /user/:id/posts is matched
+		        { path: 'posts', component: UserPosts }
+		      ]
+		    }
+		  ]
+		})
+		const app = new Vue({ router }).$mount(document.getElementById("app"))
+	</script>
+</body>
+</html>

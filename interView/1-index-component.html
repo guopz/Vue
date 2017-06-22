@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+</head>
+<body>
+	<div id="app">
+		{{msg}}<hr>
+		<span v-html='my'></span><hr>
+		<my-component></my-component><hr>	
+		<p v-for='var (age,index) in ages'>{{age}}</p><hr>	
+		<show-age show-data="我是一个局部组件"></show-age>
+	</div>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="vue-router.js"></script>
+	<script type="text/javascript">
+		// 全局组件
+		Vue.component('myComponent',{
+			template:'<p class="nihao" @click="showNameC">{{showName}}</p>',
+			data () {
+				return {
+					hi:'全局组件1'
+				}
+			},
+			methods:{
+				showNameC () {
+					alert(this.hi);
+				}
+			},
+			computed: {
+				showName () {
+					return this.hi.split('').reverse().join('');
+				}
+			}
+		});
+		// 局部组件
+		var showAge = {
+			template:'<p>{{showDataFun}}</p>',
+			data:function(){
+				return {
+					age:32
+				}
+			},
+			props:['showData'], // 参数名称可以是 驼峰 也可以是带有中划线
+			computed: {
+				showDataFun: function(){
+					return this.showData.split('').join(',');
+				}
+			}
+		};
+		var app = new Vue({
+			el:"#app",
+			data: {
+				msg:'你好啊！',
+				my:'<p>大家好！</p>',
+				ages:[1,23,4,66]
+			},
+			watch: {
+				msg:function(val,_new){
+					console.log(val,_new);
+				}
+			},
+			components:{
+				'showAge':showAge
+			}
+		});
+		
+	</script>
+</body>
+</html>

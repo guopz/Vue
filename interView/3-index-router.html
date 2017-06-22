@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vur-router</title>
+	<style type="text/css">
+		 .router-link-active{color:red;}
+	</style>
+</head>
+<body>
+	<!-- 设置根节点 -->
+	<div id="app">
+		<h1>Hell App!</h1>
+		<p>
+			<router-link to="/foo/222">foo</router-link>
+			<router-link :to="{name:'bar1',params:{name:'123456'}}">bar</router-link>
+			<router-link to="/foo/111/box">foo</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="vue-router.js"></script>
+	<script type="text/javascript">
+		// 定义两个 组件
+		var Foo = {
+			template:'<div>我是 Foo <router-view></router-view></div>'
+		};
+		var Bar = {
+			template:'<div>{{$route.params.name}}</div>'
+		};
+		var box = {
+			template:'<p>我是 {{$route.params.id}}</p>'
+		};
+		var box2 = {
+			template:'<p>我是 box</p>'
+		};
+		// 定义一个路由
+		var myRoutes = [
+			{ path: '/', redirect:'/foo' },
+			{ path: '/foo/:id', component: Foo, children: [
+				{ path:'', component:box },
+				{ path:'box', component:box2 }
+			]},
+			{ path: '/bar/:name', name:'bar1', component: Bar }
+		];
+		// 创建一个 routes 实例
+		var myRouter = new VueRouter({
+			routes: myRoutes
+		});
+		// 挂载到 根实例上
+		var vm = new Vue({
+			el:'#app',
+			router:myRouter
+		});
+	</script>
+</body>
+</html>
