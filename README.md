@@ -1,14 +1,15 @@
 # Vue
 Vue 学习组件
-主要是介绍 component vue-router 使用以及vue的一些知识点。\<br>  
+主要是介绍 component vue-router 使用以及vue的一些知识点。\  
 页面demo采用的是挂载 vue.js 的方式使用的版本
 
 1. Vue.js `v2.3.0`
 2. Vue-router `v2.6.0`
 
-浏览地址 https://guopz.github.io/Vue/interView/#/cours\<br>  
-效果截图\<br>  
-![效果图片](https://github.com/guopz/Vue/blob/master/interView/GIF.gif)\<br>  
+浏览地址 https://guopz.github.io/Vue/interView/#/cours \  
+效果截图 \
+
+![效果图片](https://github.com/guopz/Vue/blob/master/interView/GIF.gif)\  
 喜欢的朋友可以 star 下，谢了。
 
 ### vue component
