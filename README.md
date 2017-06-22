@@ -1,12 +1,15 @@
 # Vue
 Vue 学习组件
-
-页面demo采用的是挂载 vue.js 的方式，简单说一下使用的版本
+主要是介绍 component vue-router 使用以及vue的一些知识点。
+页面demo采用的是挂载 vue.js 的方式使用的版本
 
 1. Vue.js `v2.3.0`
 2. Vue-router `v2.6.0`
 
-主要是介绍 component vue-router 使用以及vue的一些知识点。
+浏览地址 https://guopz.github.io/Vue/interView/#/cours
+效果截图
+![效果图片](https://https://github.com/guopz/Vue/blob/master/interView/GIF.gif)
+喜欢的朋友可以 star 下，谢了。
 
 ### vue component
 Vue 的组件分两种形式 即 **全局组件** 和 **局部组件**
