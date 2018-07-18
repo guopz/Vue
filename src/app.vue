@@ -16,7 +16,8 @@ export default {
  	data() {
  		return {
  			text: 'abvc12',
- 			title: '大家好'
+ 			title: '大家好',
+            node: 'add'
  		}
  	},
  	computed: {
